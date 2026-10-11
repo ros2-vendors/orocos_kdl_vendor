@@ -42,6 +42,8 @@ macro(build_orocos_kdl)
     GIT_CONFIG advice.detachedHead=false
     UPDATE_COMMAND ""
     TIMEOUT 600
+    PATCH_COMMAND
+      patch -p1 -N -r - < ${CMAKE_CURRENT_SOURCE_DIR}/patches/0001-orocos-kdl-interface-include.patch || true
     SOURCE_SUBDIR orocos_kdl
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
